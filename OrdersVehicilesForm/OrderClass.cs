@@ -11,6 +11,7 @@ namespace OrdersVehicilesForm
 
         public int orderID;
         public string orderCustomerName;
+        public int orderVehicileID;
         public string orderType;
         public string orderVehicileType;
         public int orderDuration;
@@ -22,6 +23,17 @@ namespace OrdersVehicilesForm
             Car CarOrder = new Car();
         }
         */
+
+        //                public void AssignVehicileOrder()
+        //                {
+        //                    /*public*/ VehicileAutoClass orderAutoComposition = new VehicileAutoClass();
+        //                }
+
+        public VehicileAutoClass orderAutoComposition = new VehicileAutoClass();
+
+        public VehicileBusClass orderBusComposition = new VehicileBusClass();
+
+        public VehicileTruckClass orderTruckComposition = new VehicileTruckClass();
 
     }
 }

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="OrdersVehicilesForm.Form1" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAEBAgMUaCgICDgAEAGAACAKoJCKQLFAEA0llCQACEE=</HashCode>
+      <FileName>Form1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrdersVehicilesForm.OrderClass" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACQAAAABAAAAAQCAAAAIAAAAgAAAAEAAAAAAAQAQ=</HashCode>
+      <FileName>OrderClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrdersVehicilesForm.Program" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrdersVehicilesForm.VehicileAutoClass" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAQAAAgAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VehicileAutoClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrdersVehicilesForm.VehicileBusClass" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAASAg=</HashCode>
+      <FileName>VehicileBusClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrdersVehicilesForm.VehicileClass" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAEAQEAAAAAAAAAAAAAAAAAAAAiAAABAAAAAAA=</HashCode>
+      <FileName>VehicileClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrdersVehicilesForm.VehicileTruckClass" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAACAAAAAAAAAAAAAACAAAAAAAAAAACAA=</HashCode>
+      <FileName>VehicileTruckClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrdersVehicilesForm.Properties.Resources" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrdersVehicilesForm.Properties.Settings" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

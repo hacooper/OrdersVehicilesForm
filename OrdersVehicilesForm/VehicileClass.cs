@@ -8,6 +8,8 @@ namespace OrdersVehicilesForm
 {
     class VehicileClass
     {
+
+        //hac: forget to make sub classes inherited. they are just new classes with same properties.
         public int vehicileID;
         public string vehicileMake;
         public string vehicileType;
