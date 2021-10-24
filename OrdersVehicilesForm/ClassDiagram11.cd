@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="OrdersVehicilesForm.Form1" Collapsed="true">
+  <Class Name="OrdersVehicilesForm.Form1">
     <Position X="7.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CAEBAgMUaCgICDgAEAGAACAKoJCKQLFAEA0llCQACEE=</HashCode>
       <FileName>Form1.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OrdersVehicilesForm.OrderClass" Collapsed="true">
+  <Class Name="OrdersVehicilesForm.OrderClass">
     <Position X="9.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAACQAAAABAAAAAQCAAAAIAAAAgAAAAEAAAAAAAQAQ=</HashCode>
       <FileName>OrderClass.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OrdersVehicilesForm.Program" Collapsed="true">
+  <Class Name="OrdersVehicilesForm.Program">
     <Position X="11" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>

@@ -28,19 +28,13 @@ namespace OrdersVehicilesForm
 
             int vehicileAge = currentYear - vehicileYear;
 
-//            MessageBox.Show("vehicileAge = " + vehicileAge);
-
             //Calculate 5% of newretail value
             //Multiply by year age
-            //Subtractnfrom new retail value
+            //Subtract from new retail value
 
-//            MessageBox.Show("retailValueNew = " + retailValueNew);
-
-            //          int value5percent = ((5 / 100) * retailValueNew);
+            //int value5percent = ((5 / 100) * retailValueNew);
 
             double value5percent = retailValueNew * 0.05;
-
-//            MessageBox.Show("value5percent = " + value5percent);
 
             double moneyOff = vehicileAge * value5percent;
 
@@ -54,16 +48,12 @@ namespace OrdersVehicilesForm
         {
             double monthlyLease = retailValueNew * 0.01;
 
-//            MessageBox.Show("monthlyLease = " + monthlyLease);
-
             return Convert.ToInt32(monthlyLease);
         }
 
         public int CalculateAutoRentalValue(int vehicileYear, int retailValueNew)
         {
             double daylyRental = retailValueNew * 0.001;
-
-//            MessageBox.Show("Daily Rental = " + daylyRental);
 
             return Convert.ToInt32(daylyRental);
         }

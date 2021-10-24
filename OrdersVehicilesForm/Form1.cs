@@ -63,11 +63,11 @@ namespace OrdersVehicilesForm
             //1,Feedmix,0,R,4,Bus
             //ID,Customer name, Order Vehicile ID, Order Type Rental Lease Purchase, Order Duration, Vehicile type
 
-            string fileToReadName = @"C:\app\rizla\csharp_test\vehicile_orders_csv_test.txt";
+            string fileToReadName = @"C:\rac_csharp_project\orders_file.txt";
             string lineRead;
             int arrayCounter = 0;
 
-            string fileToWriteName = @"C:\app\rizla\csharp_test\vehicile_orders_csv_dump.txt"; // test only
+            string fileToWriteName = @"C:\rac_csharp_project\orders_file_dump.txt"; // test only
 
             StreamReader fileToRead = new StreamReader(fileToReadName);
             StreamWriter fileToWrite = new StreamWriter(fileToWriteName);  // test only
@@ -88,14 +88,14 @@ namespace OrdersVehicilesForm
                     ordersArray[arrayCounter].orderType = lineElements[3];
                     ordersArray[arrayCounter].orderDuration = Int32.Parse(lineElements[4]);
                     ordersArray[arrayCounter].orderVehicileType = lineElements[5];
+                    /*
+                                        string lineOutString = "Order ID = " + lineElements[0] + " " + "Customer Name = " + lineElements[1]
+                                            + " " + "Order Vehicile ID = " + lineElements[2]
+                    + " " + "Order Type = " + lineElements[3] + " " + "Order Duration = " + lineElements[4]
+                    + " " + "Vehicile Type = " + lineElements[5]; // test only
 
-                    string lineOutString = "Order ID = " + lineElements[0] + " " + "Customer Name = " + lineElements[1]
-                        + " " + "Order Vehicile ID = " + lineElements[2]
-+ " " + "Order Type = " + lineElements[3] + " " + "Order Duration = " + lineElements[4]
-+ " " + "Vehicile Type = " + lineElements[5]; // test only
-
-                    fileToWrite.WriteLine(lineOutString); // test only
-
+                                        fileToWrite.WriteLine(lineOutString); // test only
+                    */
                 }
                 catch (FormatException e)
 
@@ -128,7 +128,7 @@ namespace OrdersVehicilesForm
         public void ReadVehicilesFile()
         {
 
-            string fileToReadName = @"C:\app\rizla\csharp_test\vehiciles_csv_test.txt";
+            string fileToReadName = @"C:\rac_csharp_project\vehiciles_file.txt";
             string lineRead;
             int fileArrayCounter = 0;
 
@@ -137,7 +137,7 @@ namespace OrdersVehicilesForm
             vehicileBusArrayCounter = 0;
             vehicileTruckArrayCounter = 0;
 
-            string fileToWriteName = @"C:\app\rizla\csharp_test\vehicile_csv_dump.txt"; // test only
+            string fileToWriteName = @"C:\rac_csharp_project\vehiciles_file_dump.txt"; // test only
 
             StreamReader fileToRead = new StreamReader(fileToReadName);
             StreamWriter fileToWrite = new StreamWriter(fileToWriteName);  // test only
@@ -166,13 +166,14 @@ namespace OrdersVehicilesForm
 
                     vehicileAutoArrayCounter++;
 
+                    /*
                     string lineOutString = "ID = " + lineElements[0] + " " + "Make = " + lineElements[1]
 + " " + "Type = " + lineElements[2] + " " + "Year = " + lineElements[3]
 + " " + "Miles = " + lineElements[4] + " " + "Value = " + lineElements[5]
 + " " + "Availability = " + lineElements[6] + " " + "Spare = " + lineElements[7]; // test only
 
                     fileToWrite.WriteLine(lineOutString); // test only
-
+                    */
                 }
                 else
                 if (lineElements[2] == "Bus")
@@ -331,6 +332,8 @@ namespace OrdersVehicilesForm
 
         private void vehicilesFetchButton_Click(object sender, EventArgs e)
         {
+            // reset order vehicile type when vehiciles refetched
+            orderTypeBoxValue = OrderVehicileTypeListBox.GetItemText(OrderVehicileTypeListBox.SelectedItem);
 
             //Fetch first vehicile based on order vehicile type to 
             //vehicileArrayCounter set to 0 when new order was fetched
@@ -469,7 +472,6 @@ namespace OrdersVehicilesForm
             if (vehicileArrayCounter < vehicileArrayMax - 1)
             {
 
-
                 switch (orderTypeBoxValue)
                 {
                     case "Auto":
@@ -541,17 +543,43 @@ namespace OrdersVehicilesForm
 
             if (ordersArray[orderArrayCounter].orderValue != 0) // check if order already fulfilled
             {
-                MessageBox.Show("Order " + ordersArray[orderArrayCounter].orderValue + " already assigned.");
-
+                //MessageBox.Show("Order " + ordersArray[orderArrayCounter].orderValue + " already assigned.");
+                MessageBox.Show("Order already assigned.");
                 return;
             }
 
-            if (vehicileAutoArray[vehicileArrayCounter].vehicileAvailability == "0") // check if vehicile already assigned
-
+            // check if vehicile already assigned
+            switch (orderTypeBoxValue)
             {
-                MessageBox.Show("Vehicile already assigned.");
+                case "Auto":
+                    {
+                        if (vehicileAutoArray[vehicileArrayCounter].vehicileAvailability == "0")
+                        {
+                            MessageBox.Show("Vehicile already assigned.");
+                            return;
+                        }
+                        break;
+                    }
 
-                return;
+                case "Bus":
+                    {
+                        if (vehicileBusArray[vehicileArrayCounter].vehicileAvailability == "0")
+                        {
+                            MessageBox.Show("Vehicile already assigned.");
+                            return;
+                        }
+                        break;
+                    }
+
+                case "Truck":
+                    {
+                        if (vehicileTruckArray[vehicileArrayCounter].vehicileAvailability == "0")
+                        {
+                            MessageBox.Show("Vehicile already assigned.");
+                            return;
+                        }
+                        break;
+                    }
             }
 
             //calculate order value based on vehicile type order type. 
@@ -613,34 +641,34 @@ namespace OrdersVehicilesForm
                 {
                     case "P":
                         {
-                            int tempOrderValue = ordersArray[orderArrayCounter].orderBusComposition.CalculateBusSaleValue(vehicileAutoArray[vehicileArrayCounter].vehicileYear, vehicileAutoArray[vehicileArrayCounter].vehicileValueNew);
+                            int tempOrderValue = ordersArray[orderArrayCounter].orderBusComposition.CalculateBusSaleValue(vehicileBusArray[vehicileArrayCounter].vehicileYear, vehicileBusArray[vehicileArrayCounter].vehicileValueNew);
 
                             ordersArray[orderArrayCounter].orderValue = tempOrderValue;
-                            vehicileAutoArray[vehicileArrayCounter].vehicileAvailability = "0";
-                            ordersArray[orderArrayCounter].orderVehicileID = vehicileAutoArray[vehicileArrayCounter].vehicileID;
-                            ordersArray[orderArrayCounter].orderBusComposition.vehicileID = vehicileAutoArray[vehicileArrayCounter].vehicileID;
+                            vehicileBusArray[vehicileArrayCounter].vehicileAvailability = "0";
+                            ordersArray[orderArrayCounter].orderVehicileID = vehicileBusArray[vehicileArrayCounter].vehicileID;
+                            ordersArray[orderArrayCounter].orderBusComposition.vehicileID = vehicileBusArray[vehicileArrayCounter].vehicileID;
 
                             break;
                         }
                     case "R":
                         {
-                            int tempOrderValue = ordersArray[orderArrayCounter].orderBusComposition.CalculateBusRentalValue(vehicileAutoArray[vehicileArrayCounter].vehicileYear, vehicileAutoArray[vehicileArrayCounter].vehicileValueNew);
+                            int tempOrderValue = ordersArray[orderArrayCounter].orderBusComposition.CalculateBusRentalValue(vehicileBusArray[vehicileArrayCounter].vehicileYear, vehicileBusArray[vehicileArrayCounter].vehicileValueNew);
 
                             ordersArray[orderArrayCounter].orderValue = tempOrderValue;
-                            vehicileAutoArray[vehicileArrayCounter].vehicileAvailability = "0";
-                            ordersArray[orderArrayCounter].orderVehicileID = vehicileAutoArray[vehicileArrayCounter].vehicileID;
-                            ordersArray[orderArrayCounter].orderBusComposition.vehicileID = vehicileAutoArray[vehicileArrayCounter].vehicileID;
+                            vehicileBusArray[vehicileArrayCounter].vehicileAvailability = "0";
+                            ordersArray[orderArrayCounter].orderVehicileID = vehicileBusArray[vehicileArrayCounter].vehicileID;
+                            ordersArray[orderArrayCounter].orderBusComposition.vehicileID = vehicileBusArray[vehicileArrayCounter].vehicileID;
 
                             break;
                         }
                     case "L":
                         {
-                            int tempOrderValue = ordersArray[orderArrayCounter].orderBusComposition.CalculateBusLeaseValue(vehicileAutoArray[vehicileArrayCounter].vehicileYear, vehicileAutoArray[vehicileArrayCounter].vehicileValueNew);
+                            int tempOrderValue = ordersArray[orderArrayCounter].orderBusComposition.CalculateBusLeaseValue(vehicileBusArray[vehicileArrayCounter].vehicileYear, vehicileBusArray[vehicileArrayCounter].vehicileValueNew);
 
                             ordersArray[orderArrayCounter].orderValue = tempOrderValue;
-                            vehicileAutoArray[vehicileArrayCounter].vehicileAvailability = "0";
-                            ordersArray[orderArrayCounter].orderVehicileID = vehicileAutoArray[vehicileArrayCounter].vehicileID;
-                            ordersArray[orderArrayCounter].orderBusComposition.vehicileID = vehicileAutoArray[vehicileArrayCounter].vehicileID;
+                            vehicileBusArray[vehicileArrayCounter].vehicileAvailability = "0";
+                            ordersArray[orderArrayCounter].orderVehicileID = vehicileBusArray[vehicileArrayCounter].vehicileID;
+                            ordersArray[orderArrayCounter].orderBusComposition.vehicileID = vehicileBusArray[vehicileArrayCounter].vehicileID;
 
                             break;
                         }
@@ -655,34 +683,34 @@ namespace OrdersVehicilesForm
                 {
                     case "P":
                         {
-                            int tempOrderValue = ordersArray[orderArrayCounter].orderTruckComposition.CalculateTruckSaleValue(vehicileAutoArray[vehicileArrayCounter].vehicileYear, vehicileAutoArray[vehicileArrayCounter].vehicileValueNew);
+                            int tempOrderValue = ordersArray[orderArrayCounter].orderTruckComposition.CalculateTruckSaleValue(vehicileTruckArray[vehicileArrayCounter].vehicileYear, vehicileTruckArray[vehicileArrayCounter].vehicileValueNew);
 
                             ordersArray[orderArrayCounter].orderValue = tempOrderValue;
-                            vehicileAutoArray[vehicileArrayCounter].vehicileAvailability = "0";
-                            ordersArray[orderArrayCounter].orderVehicileID = vehicileAutoArray[vehicileArrayCounter].vehicileID;
-                            ordersArray[orderArrayCounter].orderTruckComposition.vehicileID = vehicileAutoArray[vehicileArrayCounter].vehicileID;
+                            vehicileTruckArray[vehicileArrayCounter].vehicileAvailability = "0";
+                            ordersArray[orderArrayCounter].orderVehicileID = vehicileTruckArray[vehicileArrayCounter].vehicileID;
+                            ordersArray[orderArrayCounter].orderTruckComposition.vehicileID = vehicileTruckArray[vehicileArrayCounter].vehicileID;
 
                             break;
                         }
                     case "R":
                         {
-                            int tempOrderValue = ordersArray[orderArrayCounter].orderTruckComposition.CalculateTruckRentalValue(vehicileAutoArray[vehicileArrayCounter].vehicileYear, vehicileAutoArray[vehicileArrayCounter].vehicileValueNew);
+                            int tempOrderValue = ordersArray[orderArrayCounter].orderTruckComposition.CalculateTruckRentalValue(vehicileTruckArray[vehicileArrayCounter].vehicileYear, vehicileTruckArray[vehicileArrayCounter].vehicileValueNew);
 
                             ordersArray[orderArrayCounter].orderValue = tempOrderValue;
-                            vehicileAutoArray[vehicileArrayCounter].vehicileAvailability = "0";
-                            ordersArray[orderArrayCounter].orderVehicileID = vehicileAutoArray[vehicileArrayCounter].vehicileID;
-                            ordersArray[orderArrayCounter].orderTruckComposition.vehicileID = vehicileAutoArray[vehicileArrayCounter].vehicileID;
+                            vehicileTruckArray[vehicileArrayCounter].vehicileAvailability = "0";
+                            ordersArray[orderArrayCounter].orderVehicileID = vehicileTruckArray[vehicileArrayCounter].vehicileID;
+                            ordersArray[orderArrayCounter].orderTruckComposition.vehicileID = vehicileTruckArray[vehicileArrayCounter].vehicileID;
 
                             break;
                         }
                     case "L":
                         {
-                            int tempOrderValue = ordersArray[orderArrayCounter].orderTruckComposition.CalculateTruckLeaseValue(vehicileAutoArray[vehicileArrayCounter].vehicileYear, vehicileAutoArray[vehicileArrayCounter].vehicileValueNew);
+                            int tempOrderValue = ordersArray[orderArrayCounter].orderTruckComposition.CalculateTruckLeaseValue(vehicileTruckArray[vehicileArrayCounter].vehicileYear, vehicileTruckArray[vehicileArrayCounter].vehicileValueNew);
 
                             ordersArray[orderArrayCounter].orderValue = tempOrderValue;
-                            vehicileAutoArray[vehicileArrayCounter].vehicileAvailability = "0";
-                            ordersArray[orderArrayCounter].orderVehicileID = vehicileAutoArray[vehicileArrayCounter].vehicileID;
-                            ordersArray[orderArrayCounter].orderTruckComposition.vehicileID = vehicileAutoArray[vehicileArrayCounter].vehicileID;
+                            vehicileTruckArray[vehicileArrayCounter].vehicileAvailability = "0";
+                            ordersArray[orderArrayCounter].orderVehicileID = vehicileTruckArray[vehicileArrayCounter].vehicileID;
+                            ordersArray[orderArrayCounter].orderTruckComposition.vehicileID = vehicileTruckArray[vehicileArrayCounter].vehicileID;
 
                             break;
                         }
@@ -700,14 +728,16 @@ namespace OrdersVehicilesForm
 
             int arrayFileOutCounter = 0;
 
-            string fileToWriteName = @"C:\app\rizla\csharp_test\vehicile_orders_csv_output.txt";
+            string fileToWriteName = @"C:\rac_csharp_project\orders_assigned_file.txt";
 
             StreamWriter fileToWrite = new StreamWriter(fileToWriteName);
 
             while (arrayFileOutCounter < orderArrayRowMax)
             {
 
-                string lineOutString =
+                if (ordersArray[arrayFileOutCounter].orderValue != 0)
+                {
+                    string lineOutString =
                     ordersArray[arrayFileOutCounter].orderID + "," +
                     ordersArray[arrayFileOutCounter].orderCustomerName + "," +
                     ordersArray[arrayFileOutCounter].orderVehicileID + "," +
@@ -716,7 +746,8 @@ namespace OrdersVehicilesForm
                     //ordersArray[arrayFileOutCounter].orderDuration  + "," 
                     ordersArray[arrayFileOutCounter].orderValue;
 
-                fileToWrite.WriteLine(lineOutString);
+                    fileToWrite.WriteLine(lineOutString);
+                }
 
                 arrayFileOutCounter++;
 

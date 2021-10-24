@@ -33,8 +33,6 @@ namespace OrdersVehicilesForm
             //Multiply by year age
             //Subtractnfrom new retail value
 
-            //          int value5percent = ((5 / 100) * retailValueNew);
-
             double value5percent = retailValueNew * 0.05;
 
             double moneyOff = vehicileAge * value5percent;
