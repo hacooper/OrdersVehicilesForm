@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace OrdersVehicilesForm
 {
-    class VehicileClass
+    abstract class VehicileClass     //polymorphism application to vehicile class
     {
-
-        //hac: forget to make sub classes inherited. they are just new classes with same properties.
         public int vehicileID;
         public string vehicileMake;
         public string vehicileType;
@@ -17,5 +15,10 @@ namespace OrdersVehicilesForm
         public int vehicileMiles;
         public int vehicileValueNew;
         public string vehicileAvailability;
+
+        //abstract version of functions for polymorphism
+        public abstract int CalculateSaleValue(int vehicileYear, int retailValueNew);
+        public abstract int CalculateLeaseValue(int vehicileYear, int retailValueNew);
+        public abstract int CalculateRentalValue(int vehicileYear, int retailValueNew);
     }
 }

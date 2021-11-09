@@ -10,19 +10,10 @@ namespace OrdersVehicilesForm
     class VehicileTruckClass : VehicileClass
     {
 
-/*
-        public int vehicileID;
-        public string vehicileMake;
-        public string vehicileType;
-        public int vehicileYear;
-        public int vehicileMiles;
-        public int vehicileValueNew;
-        public string vehicileAvailability;
-*/
         //class specific properties
         int truckCapacity = 0;
 
-        public int CalculateTruckSaleValue(int vehicileYear, int retailValueNew)
+        public override int CalculateSaleValue(int vehicileYear, int retailValueNew)
         {
             DateTime now = DateTime.Now;
             int currentYear = now.Year;
@@ -45,14 +36,14 @@ namespace OrdersVehicilesForm
 
         }
 
-        public int CalculateTruckLeaseValue(int vehicileYear, int retailValueNew)
+        public override int CalculateLeaseValue(int vehicileYear, int retailValueNew)
         {
             double monthlyLease = retailValueNew * 0.01;
 
             return Convert.ToInt32(monthlyLease);
         }
 
-        public int CalculateTruckRentalValue(int vehicileYear, int retailValueNew)
+        public override int CalculateRentalValue(int vehicileYear, int retailValueNew)
         {
             double daylyRental = retailValueNew * 0.001;
 

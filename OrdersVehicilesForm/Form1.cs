@@ -594,7 +594,7 @@ namespace OrdersVehicilesForm
                         {
 
                             //call composition order/vehicile method
-                            int tempOrderValue = ordersArray[orderArrayCounter].orderAutoComposition.CalculateAutoSaleValue(vehicileAutoArray[vehicileArrayCounter].vehicileYear, vehicileAutoArray[vehicileArrayCounter].vehicileValueNew);
+                            int tempOrderValue = ordersArray[orderArrayCounter].orderAutoComposition.CalculateSaleValue(vehicileAutoArray[vehicileArrayCounter].vehicileYear, vehicileAutoArray[vehicileArrayCounter].vehicileValueNew);
 
                             //set calculated order value
                             ordersArray[orderArrayCounter].orderValue = tempOrderValue;
@@ -611,7 +611,7 @@ namespace OrdersVehicilesForm
                     case "R":
                         {
 
-                            int tempOrderValue = ordersArray[orderArrayCounter].orderAutoComposition.CalculateAutoRentalValue(vehicileAutoArray[vehicileArrayCounter].vehicileYear, vehicileAutoArray[vehicileArrayCounter].vehicileValueNew);
+                            int tempOrderValue = ordersArray[orderArrayCounter].orderAutoComposition.CalculateRentalValue(vehicileAutoArray[vehicileArrayCounter].vehicileYear, vehicileAutoArray[vehicileArrayCounter].vehicileValueNew);
 
                             ordersArray[orderArrayCounter].orderValue = tempOrderValue;
                             vehicileAutoArray[vehicileArrayCounter].vehicileAvailability = "0";
@@ -622,7 +622,7 @@ namespace OrdersVehicilesForm
                         }
                     case "L":
                         {
-                            int tempOrderValue = ordersArray[orderArrayCounter].orderAutoComposition.CalculateAutoLeaseValue(vehicileAutoArray[vehicileArrayCounter].vehicileYear, vehicileAutoArray[vehicileArrayCounter].vehicileValueNew);
+                            int tempOrderValue = ordersArray[orderArrayCounter].orderAutoComposition.CalculateLeaseValue(vehicileAutoArray[vehicileArrayCounter].vehicileYear, vehicileAutoArray[vehicileArrayCounter].vehicileValueNew);
 
                             ordersArray[orderArrayCounter].orderValue = tempOrderValue;
                             vehicileAutoArray[vehicileArrayCounter].vehicileAvailability = "0";
@@ -642,7 +642,7 @@ namespace OrdersVehicilesForm
                 {
                     case "P":
                         {
-                            int tempOrderValue = ordersArray[orderArrayCounter].orderBusComposition.CalculateBusSaleValue(vehicileBusArray[vehicileArrayCounter].vehicileYear, vehicileBusArray[vehicileArrayCounter].vehicileValueNew);
+                            int tempOrderValue = ordersArray[orderArrayCounter].orderBusComposition.CalculateSaleValue(vehicileBusArray[vehicileArrayCounter].vehicileYear, vehicileBusArray[vehicileArrayCounter].vehicileValueNew);
 
                             ordersArray[orderArrayCounter].orderValue = tempOrderValue;
                             vehicileBusArray[vehicileArrayCounter].vehicileAvailability = "0";
@@ -653,7 +653,7 @@ namespace OrdersVehicilesForm
                         }
                     case "R":
                         {
-                            int tempOrderValue = ordersArray[orderArrayCounter].orderBusComposition.CalculateBusRentalValue(vehicileBusArray[vehicileArrayCounter].vehicileYear, vehicileBusArray[vehicileArrayCounter].vehicileValueNew);
+                            int tempOrderValue = ordersArray[orderArrayCounter].orderBusComposition.CalculateRentalValue(vehicileBusArray[vehicileArrayCounter].vehicileYear, vehicileBusArray[vehicileArrayCounter].vehicileValueNew);
 
                             ordersArray[orderArrayCounter].orderValue = tempOrderValue;
                             vehicileBusArray[vehicileArrayCounter].vehicileAvailability = "0";
@@ -664,7 +664,7 @@ namespace OrdersVehicilesForm
                         }
                     case "L":
                         {
-                            int tempOrderValue = ordersArray[orderArrayCounter].orderBusComposition.CalculateBusLeaseValue(vehicileBusArray[vehicileArrayCounter].vehicileYear, vehicileBusArray[vehicileArrayCounter].vehicileValueNew);
+                            int tempOrderValue = ordersArray[orderArrayCounter].orderBusComposition.CalculateLeaseValue(vehicileBusArray[vehicileArrayCounter].vehicileYear, vehicileBusArray[vehicileArrayCounter].vehicileValueNew);
 
                             ordersArray[orderArrayCounter].orderValue = tempOrderValue;
                             vehicileBusArray[vehicileArrayCounter].vehicileAvailability = "0";
@@ -684,7 +684,7 @@ namespace OrdersVehicilesForm
                 {
                     case "P":
                         {
-                            int tempOrderValue = ordersArray[orderArrayCounter].orderTruckComposition.CalculateTruckSaleValue(vehicileTruckArray[vehicileArrayCounter].vehicileYear, vehicileTruckArray[vehicileArrayCounter].vehicileValueNew);
+                            int tempOrderValue = ordersArray[orderArrayCounter].orderTruckComposition.CalculateSaleValue(vehicileTruckArray[vehicileArrayCounter].vehicileYear, vehicileTruckArray[vehicileArrayCounter].vehicileValueNew);
 
                             ordersArray[orderArrayCounter].orderValue = tempOrderValue;
                             vehicileTruckArray[vehicileArrayCounter].vehicileAvailability = "0";
@@ -695,7 +695,7 @@ namespace OrdersVehicilesForm
                         }
                     case "R":
                         {
-                            int tempOrderValue = ordersArray[orderArrayCounter].orderTruckComposition.CalculateTruckRentalValue(vehicileTruckArray[vehicileArrayCounter].vehicileYear, vehicileTruckArray[vehicileArrayCounter].vehicileValueNew);
+                            int tempOrderValue = ordersArray[orderArrayCounter].orderTruckComposition.CalculateRentalValue(vehicileTruckArray[vehicileArrayCounter].vehicileYear, vehicileTruckArray[vehicileArrayCounter].vehicileValueNew);
 
                             ordersArray[orderArrayCounter].orderValue = tempOrderValue;
                             vehicileTruckArray[vehicileArrayCounter].vehicileAvailability = "0";
@@ -706,7 +706,7 @@ namespace OrdersVehicilesForm
                         }
                     case "L":
                         {
-                            int tempOrderValue = ordersArray[orderArrayCounter].orderTruckComposition.CalculateTruckLeaseValue(vehicileTruckArray[vehicileArrayCounter].vehicileYear, vehicileTruckArray[vehicileArrayCounter].vehicileValueNew);
+                            int tempOrderValue = ordersArray[orderArrayCounter].orderTruckComposition.CalculateLeaseValue(vehicileTruckArray[vehicileArrayCounter].vehicileYear, vehicileTruckArray[vehicileArrayCounter].vehicileValueNew);
 
                             ordersArray[orderArrayCounter].orderValue = tempOrderValue;
                             vehicileTruckArray[vehicileArrayCounter].vehicileAvailability = "0";
